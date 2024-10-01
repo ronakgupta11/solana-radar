@@ -9,18 +9,41 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
+    "@heroicons/react": "^2.1.5",
+    "@radix-ui/react-hover-card": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@react-three/drei": "^9.114.0",
+    "@react-three/fiber": "^8.17.8",
+    "@tabler/icons-react": "^3.19.0",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
+    "flowbite": "^2.5.2",
+    "flowbite-react": "^0.10.2",
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.440.0",
+    "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.10",
     "okto-sdk-react": "^0.1.1",
+    "qss": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropzone": "^14.2.3",
+    "react-element-to-jsx-string": "^15.0.0",
+    "react-icons": "^5.3.0",
+    "simplex-noise": "^4.0.3",
+    "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.169.0",
+    "three-globe": "^2.31.3"
   },
   "devDependencies": {
+    "@types/three": "^0.169.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
   }
