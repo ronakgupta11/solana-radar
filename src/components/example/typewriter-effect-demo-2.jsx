@@ -1,22 +1,26 @@
 "use client";
-import { TypewriterEffect } from "../ui/typewriter-effect";
+import { TypewriterEffect, TypewriterEffectSmooth } from "../ui/typewriter-effect";
 
 export default function TypewriterEffectDemo() {
   const words = [
     {
-      text: "Unlock ",
+      text: "Unlock",
+    },
+
+    {
+      text: "the",
     },
     {
-      text: "the ",
+      text: "value",
     },
     {
-      text: "value ",
+      text: "of",
     },
     {
-      text: "of Your",
+      text: "Your",
     },
     {
-      text: "Data.",
+      text: "Data",
       className: "text-blue-500 dark:text-blue-500",
     },
   ];
