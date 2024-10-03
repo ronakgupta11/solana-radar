@@ -1,9 +1,9 @@
 "use client"
 import Image from "next/image";
-import TopDescription from "./components/landingPage/TopDescription";
-import MidDescription from "./components/landingPage/MidDescription";
-import LowerDescription from "./components/landingPage/LowerDescription";
-import {FooterPage} from "./components/landingPage/FooterPage";
+import TopDescription from "../components/app/landingPage/TopDescription";
+import MidDescription from "../components/app/landingPage/MidDescription";
+import LowerDescription from "../components/app/landingPage/LowerDescription";
+import {FooterPage} from "../components/app/landingPage/FooterPage";
 export default function Home() {
   return (
     <>

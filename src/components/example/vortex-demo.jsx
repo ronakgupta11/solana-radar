@@ -1,6 +1,6 @@
 import React from "react";
 import { Vortex } from "../ui/vortex";
-import JoinNowButton from '../../app/components/landingPage/JoinNowButton'
+import JoinNowButton from '../app/landingPage/JoinNowButton'
 import TypewriterEffectDemo from "./typewriter-effect-demo-2";
 export default function VortexDemo() {
   return (
@@ -9,9 +9,6 @@ export default function VortexDemo() {
       <Vortex
         backgroundColor="black"
         className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full">
-        {/* <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
-        Unlock the Value of Your Data
-        </h2> */}
         <TypewriterEffectDemo/>
         <p className="text-white text-sm md:text-2xl max-w-xl mt-6 text-center">
         Transform raw datasets into powerful insights. Upload your data and let our marketplace of expert labelers prepare it for AI training

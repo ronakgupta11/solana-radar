@@ -1,5 +1,5 @@
 import React from "react";
-import TaskCardForLabeler from "../components/labelerboard/TaskCardForLabeler";
+import TaskCardForLabeler from "../../components/app/labelerboard/TaskCardForLabeler";
 
 const page = () => {
   return (
