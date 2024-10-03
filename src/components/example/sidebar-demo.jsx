@@ -29,14 +29,14 @@ export default function SidebarDemo() {
       ),
     },
     {
-      label: "Settings",
+      label: "Explore",
       href: "#",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Logout",
+      label: "Create Task",
       href: "#",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
@@ -47,9 +47,9 @@ export default function SidebarDemo() {
   return (
     (<div
       className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-7xl mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-[90rem] mt-10 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
         // for your use case, use `h-screen` instead of `h-[60vh]`
-        "h-[60vh]"
+        "h-[80vh]"
       )}>
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
@@ -93,7 +93,7 @@ export const Logo = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="font-medium text-black dark:text-white whitespace-pre">
-        Acet Labs
+        Labelize.ai
       </motion.span>
     </Link>)
   );
