@@ -5,6 +5,7 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { BackgroundGradient } from "../../../components/ui/background-gradient";
 import Image from "next/image";
 import moneyIcon from "../../../data/assets/moneyIcon.png"
+import SetRole from "./SetRoleButton";
 export default function GradientCard2({connected}) {
   
   const handleSignIn = ()=>{
@@ -26,12 +27,7 @@ export default function GradientCard2({connected}) {
         <p className="text-sm  text-neutral-400">
         Make money in your spare time. Get paid for completing simple tasks.
         </p>
-        {connected ? <button
-        onClick={handleSignIn}
-          className="rounded-full pl-3 pr-2 py-2 text-white flex items-center space-x-1  mt-4 text-xs font-bold bg-zinc-800">
-          <span>Sign Up as Worker </span>
-          
-        </button>: <WalletMultiButton  style={{
+        {connected ? <SetRole role={"worker"}/>: <WalletMultiButton  style={{
     borderRadius: '40px', // Fully rounded
     backgroundColor: '#1f2937', // Dark grey color
     color: '#ffffff', // White text for contrast
