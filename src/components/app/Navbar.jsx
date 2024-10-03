@@ -1,6 +1,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
   { name: 'Team', href: '#', current: false },
@@ -53,14 +53,16 @@ export default function Navbar() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button
-              type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              <span className="absolute -inset-1.5" />
-              <span className="sr-only">View notifications</span>
-              
-            </button>
+            
+              <WalletMultiButton  style={{
+    borderRadius: '40px', // Fully rounded
+    backgroundColor: '#1f2937', // Dark grey color
+    color: '#ffffff', // White text for contrast
+    padding: '10px 20px', // Padding for better button size
+    border: 'none', // Remove border if any
+    cursor: 'pointer', // Pointer cursor to indicate it's clickable
+  }} />
+           
 
             {/* Profile dropdown */}
            

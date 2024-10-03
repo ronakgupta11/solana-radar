@@ -1,7 +1,7 @@
 import React from 'react'
 import BackgroundGradientDemo from '@/components/example/background-gradient-demo'
-import GradientCard from '../components/signupPage/GradientCard'
-import GradientCard2 from '../components/signupPage/GradientCard2'
+import GradientCard from '../../components/app/signupPage/GradientCard'
+import GradientCard2 from '../../components/app/signupPage/GradientCard2'
 const page = () => {
   return (
     <>
