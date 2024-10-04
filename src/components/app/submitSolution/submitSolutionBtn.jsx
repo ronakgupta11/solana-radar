@@ -8,7 +8,7 @@ import * as anchor from '@project-serum/anchor';
 
 const SubmitSolution = ({ taskCreator, taskCount }) => {
   const { connection } = useConnection();
-  const { publicKey, wallet } = useWallet();
+  const { publicKey, wallet,sendTransaction } = useWallet();
   const [solution, setSolution] = useState('');
 
   const submitSolution = useCallback(
@@ -24,10 +24,21 @@ const SubmitSolution = ({ taskCreator, taskCount }) => {
           program.programId
         );
 
-        await program.methods.submitSolution(solution).accounts({
+        const tx = await program.methods.submitSolution(solution).accounts({
           worker: publicKey,
           taskAccount,
-        }).rpc();
+        }).instruction();
+
+         // Create the transaction and add the instruction
+         const transaction = new anchor.web3.Transaction().add(tx);
+
+         // Send the transaction using sendTransaction from the wallet adapter
+         const signature = await sendTransaction(transaction, connection);
+         
+         // Confirm the transaction
+         await connection.confirmTransaction(signature, 'processed');
+
+         console.log(` Sent successfully! Transaction signature: ${signature}`);
 
         console.log("Solution submitted successfully!");
       } catch (err) {

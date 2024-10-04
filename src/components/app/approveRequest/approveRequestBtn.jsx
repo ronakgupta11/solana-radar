@@ -8,7 +8,7 @@ import * as anchor from '@project-serum/anchor';
 
 const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
   const { connection } = useConnection();
-  const { publicKey, wallet } = useWallet();
+  const { publicKey, wallet,sendTransaction } = useWallet();
 
   const approveWorker = useCallback(
     async () => {
@@ -23,10 +23,21 @@ const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
           program.programId
         );
 
-        await program.methods.approveWorker(workerToApprove).accounts({
+        const tx = await program.methods.approveWorker(workerToApprove).accounts({
           creator: publicKey,
           taskAccount,
-        }).rpc();
+        }).instruction();
+
+         // Create the transaction and add the instruction
+         const transaction = new anchor.web3.Transaction().add(tx);
+
+         // Send the transaction using sendTransaction from the wallet adapter
+         const signature = await sendTransaction(transaction, connection);
+         
+         // Confirm the transaction
+         await connection.confirmTransaction(signature, 'processed');
+
+         console.log(`Approved Successfully!, Transaction signature: ${signature}`);
 
         console.log("Worker approved successfully!");
       } catch (err) {
