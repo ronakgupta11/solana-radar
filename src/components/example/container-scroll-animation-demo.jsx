@@ -2,6 +2,7 @@
 import React from "react";
 import { ContainerScroll } from "../ui/container-scroll-animation";
 import Image from "next/image";
+import code from "../../images/code.png"
 
 export default function HeroScrollDemo() {
   return (
@@ -12,13 +13,13 @@ export default function HeroScrollDemo() {
             <h1 className="text-4xl font-semibold text-black dark:text-white">
               Unleash the power of <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
+                Solana Programs
               </span>
             </h1>
           </>
         }>
         <Image
-          src={`/linear.webp`}
+          src={code}
           alt="hero"
           height={720}
           width={1400}
