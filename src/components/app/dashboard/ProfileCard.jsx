@@ -39,9 +39,12 @@ export default function ProfileCard() {
       <div className="border-t border-gray-600  "></div>
     </Card>
     </div>
+
+    {/* Earnings Tab */}
+
     <div>
     <h5 className="text-2xl mx-2  tracking-tight text-gray-900 dark:text-white">
-        Earnings To Date
+        Earnings 
       </h5>
     <Card href="#" className="w-[28rem]  mt-2">
       <div className="flex justify-between ">
