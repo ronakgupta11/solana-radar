@@ -1,6 +1,6 @@
 {
     "version": "0.1.0",
-    "name": "merged_data_labeling_marketplace",
+    "name": "data_labeling_marketplace",
     "instructions": [
         {
             "name": "setRequester",
@@ -43,6 +43,95 @@
                 }
             ],
             "args": []
+        },
+        {
+            "name": "createTask",
+            "accounts": [
+                {
+                    "name": "user",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "userDataAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "taskAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "taskDescription",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "sendRequest",
+            "accounts": [
+                {
+                    "name": "worker",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "taskAccount",
+                    "isMut": true,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "approveWorker",
+            "accounts": [
+                {
+                    "name": "creator",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "taskAccount",
+                    "isMut": true,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "worker",
+                    "type": "publicKey"
+                }
+            ]
+        },
+        {
+            "name": "submitSolution",
+            "accounts": [
+                {
+                    "name": "worker",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "taskAccount",
+                    "isMut": true,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "solution",
+                    "type": "string"
+                }
+            ]
         }
     ],
     "accounts": [
@@ -63,6 +152,48 @@
                         "name": "role",
                         "type": {
                             "defined": "Role"
+                        }
+                    },
+                    {
+                        "name": "taskCount",
+                        "type": "u64"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "TaskAccount",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "creator",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "taskDescription",
+                        "type": "string"
+                    },
+                    {
+                        "name": "taskCount",
+                        "type": "u64"
+                    },
+                    {
+                        "name": "workerRequests",
+                        "type": {
+                            "vec": "publicKey"
+                        }
+                    },
+                    {
+                        "name": "approvedWorker",
+                        "type": {
+                            "option": "publicKey"
+                        }
+                    },
+                    {
+                        "name": "solution",
+                        "type": {
+                            "option": "string"
                         }
                     }
                 ]
@@ -86,6 +217,28 @@
                     }
                 ]
             }
+        }
+    ],
+    "errors": [
+        {
+            "code": 6000,
+            "name": "NotAuthorized",
+            "msg": "Unauthorized access"
+        },
+        {
+            "code": 6001,
+            "name": "Unauthorized",
+            "msg": "Unauthorized access"
+        },
+        {
+            "code": 6002,
+            "name": "WorkerNotRequested",
+            "msg": "This worker has not requested to work on the task"
+        },
+        {
+            "code": 6003,
+            "name": "UnauthorizedWorker",
+            "msg": "Only the approved worker can submit a solution"
         }
     ]
 }

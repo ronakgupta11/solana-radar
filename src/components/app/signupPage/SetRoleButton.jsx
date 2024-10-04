@@ -19,7 +19,7 @@ const SetRole = ({role}) => {
 
                 // Derive the PDA for the user
                 const [userDataAccount, bump] = await PublicKey.findProgramAddressSync(
-                    [Buffer.from("data"), publicKey.toBuffer()],
+                    [Buffer.from("user-data"), publicKey.toBuffer()],
                     program.programId
                 );
 

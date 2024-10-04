@@ -23,7 +23,7 @@ const page = () => {
 
       // Derive the PDA for the user
       const [userDataAccount] = await PublicKey.findProgramAddressSync(
-        [Buffer.from("data"), publicKey.toBuffer()],
+        [Buffer.from("user-data"), publicKey.toBuffer()],
         program.programId
       );
 

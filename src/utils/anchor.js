@@ -2,7 +2,7 @@
 import * as anchor from '@project-serum/anchor';
 import { PublicKey } from '@solana/web3.js';
 
-export const PROGRAM_ID = new PublicKey('2BPcu31sZWQuTp8ay6PUKfYNWRRgd1BDDDtZ2R782V9V');
+export const PROGRAM_ID = new PublicKey('4ptzi7XATHyFPSTapfFQrxPa8PXWkfjG2PSYXQo13Exg');
 
 export const getProvider = (connection, wallet) => {
     const provider = new anchor.AnchorProvider(
