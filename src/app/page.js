@@ -8,10 +8,12 @@ import MacbookScrollDemo from "@/components/example/macbook-scroll-demo";
 import HeroScrollDemo from "@/components/example/container-scroll-animation-demo";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import TextHoverEffectDemo from "@/components/example/text-hover-effect-demo";
+import Navbar from "@/components/app/Navbar";
 export default function Home() {
   return (
     <>
     <div className="min-h-screen ">
+      <Navbar/>
      <TopDescription/> 
      <MidDescription/>
 <HeroScrollDemo/>

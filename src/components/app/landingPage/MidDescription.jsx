@@ -4,7 +4,7 @@ import Features from './Features'
 const MidDescription = () => {
   return (
     <>
-    <div className='bg-[black] flex justify-evenly h-[95vh]'>
+    <div className='bg-[black] flex justify-evenly h-[95vh] mt-10'>
      <div className='w-[50%]'>
       <Features/>
      </div>

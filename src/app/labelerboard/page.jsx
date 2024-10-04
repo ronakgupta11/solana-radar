@@ -1,9 +1,11 @@
 import React from "react";
 import TaskCardForLabeler from "../../components/app/labelerboard/TaskCardForLabeler";
+import Navbar from "@/components/app/Navbar";
 
 const page = () => {
   return (
     <>
+      <Navbar/>
       <div class="flex flex-col items-center gap-10 py-[60px] self-stretch">
         <div>
           <h2 class="text-white text-center font-work-sans text-[51px] font-semibold leading-[1.1] capitalize">
