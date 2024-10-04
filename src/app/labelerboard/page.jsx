@@ -45,24 +45,11 @@ const page = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 px-10 pb-10">
       {tasks.length > 0 ? (
           tasks.map((task, index) => (
-           <p>task found</p>
+           <TaskCardForLabeler cardData={task} key={index}/>
           ))
         ) : (
           <p className="text-center">No tasks found.</p>
         )}
-   
-        <div className="mx-auto">
-          <TaskCardForLabeler />
-        </div>
-        <div className="mx-auto">
-          <TaskCardForLabeler />
-        </div>
-        <div className="mx-auto">
-          <TaskCardForLabeler />
-        </div>
-        <div className="mx-auto">
-          <TaskCardForLabeler />
-        </div>
       </div>
     </>
   );
