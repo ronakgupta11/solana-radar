@@ -8,6 +8,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from '@solana/web3.js';
 import * as anchor from '@project-serum/anchor';
 import { getProvider, getProgram } from '../../utils/anchor';
+import Navbar from '@/components/app/Navbar';
 
 const page = () => {
   const router = useRouter(); // Initialize router
@@ -51,6 +52,7 @@ const page = () => {
 
   return (
     <>
+    <Navbar/>
       <div className='flex gap-y-5 flex-col md:flex-row align-middle items-center justify-evenly mt-[4rem]'>
         <div className='md:w-[25%] bg-black'>
           <GradientCard connected={connected} />

@@ -22,7 +22,7 @@ export default function MacbookDemo() {
     </div>)
   );
 }
-// Peerlist logo
+// youtube logo
 const Badge = ({
   className
 }) => {

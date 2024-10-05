@@ -8,20 +8,24 @@ const FAQSection = () => {
       <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
       <Accordion type="single" className="max-w-3xl mx-auto" collapsible>
         <FAQItem
-          question="What is this platform about?"
-          answer="This platform connects users for data labeling tasks in a decentralized marketplace."
+          question="⁠ ⁠What is a decentralized data labeling marketplace?"
+          answer="A decentralized data labeling marketplace connects users with a global pool of skilled labelers without relying on a central authority. This structure fosters diversity, enhances accessibility, and allows for efficient collaboration, ensuring high-quality annotated datasets."
         />
         <FAQItem
-          question="How do I become a worker?"
-          answer="To become a worker, you can register on our platform using your Solana wallet, and select the worker role."
+          question="⁠How do you ensure the quality of labeled data?"
+          answer="We implement a community-driven review system where multiple labelers validate each annotation. This collaborative approach increases accuracy to over 95%, minimizing variability and ensuring reliable data for your AI models."
         />
         <FAQItem
-          question="How can I create tasks as a requester?"
-          answer="Requesters can create tasks by connecting their wallet and selecting the create task option on their dashboard."
+          question="What incentives do labelers receive?"
+          answer="Labelers are rewarded with tokens and bonuses based on their performance. Our incentive structure can increase earnings by up to 30%, motivating labelers to deliver high-quality work quickly, benefiting both parties."
         />
         <FAQItem
-          question="What payment methods are supported?"
-          answer="Currently, we support payments in SOL and other Solana-based tokens."
+          question="How fast are payments processed?"
+          answer="CPayments on our platform are processed using blockchain technology, allowing for transactions to be completed in under 10 seconds. This rapid processing ensures timely compensation for labelers and reduces administrative burdens for users."
+        />
+        <FAQItem
+          question="How does your platform improve the labeling process?"
+          answer="Our platform streamlines the labeling process, cutting typical turnaround times by up to 50%. With easy onboarding for labelers and organizations, we make it quick and efficient to get high-quality annotated data ready for AI training."
         />
       </Accordion>
     </div>
