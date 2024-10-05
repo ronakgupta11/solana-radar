@@ -18,7 +18,7 @@ export default function Home() {
       <Navbar/>
      <TopDescription/> 
      <MidDescription/>
-<HeroScrollDemo/>
+      <HeroScrollDemo/>
      <LowerDescription/>
      <TeamSection/>
      <FAQSection/>
