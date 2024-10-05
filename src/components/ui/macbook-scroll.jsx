@@ -26,7 +26,7 @@ import { IconCaretDownFilled } from "@tabler/icons-react";
 import Image from "next/image";
 
 export const MacbookScroll = ({
-  src,
+  ChildComponent,
   showGradient,
   title,
   badge
@@ -70,7 +70,7 @@ export const MacbookScroll = ({
       </motion.h2>
       {/* Lid */}
       <Lid
-        src={src}
+        ChildComponent={ChildComponent}
         scaleX={scaleX}
         scaleY={scaleY}
         rotate={rotate}
@@ -111,7 +111,7 @@ export const Lid = ({
   scaleY,
   rotate,
   translate,
-  src
+  ChildComponent
 }) => {
   return (
     (<div className="relative [perspective:800px]">
@@ -143,11 +143,10 @@ export const Lid = ({
         }}
         className="h-96 w-[32rem] absolute inset-0 bg-[#010101] rounded-2xl p-2">
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
-        <Image
-          src={src}
-          alt="aceternity logo"
-          fill
-          className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full" />
+        {/* Render dynamic component here */}
+        <div className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full">
+          {ChildComponent && <ChildComponent />}
+        </div>
       </motion.div>
     </div>)
   );

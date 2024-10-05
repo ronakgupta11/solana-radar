@@ -4,11 +4,11 @@ import Features from './Features'
 const MidDescription = () => {
   return (
     <>
-    <div className='bg-[black] flex justify-evenly h-[95vh] mt-10'>
-     <div className='w-[50%]'>
+    <div className='bg-[black] flex flex-col-reverse sm:flex-row justify-evenly  mt-10'>
+     <div className='sm:w-[50%] w-full'>
       <Features/>
      </div>
-     <div className='w-[40%] '>
+     <div className='sm:w-[40%] w-full hidden sm:block '>
      <GlobeDemo/>
      </div>
     </div>
