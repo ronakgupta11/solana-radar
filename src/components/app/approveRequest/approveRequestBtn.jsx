@@ -48,7 +48,10 @@ const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
   );
 
   return (
-    <button onClick={approveWorker} className="btn-primary">Approve Worker</button>
+    <button onClick={approveWorker} className="shadow-[0_0_0_3px_#000000_inset] px-6 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+   Approve
+</button>
+   
   );
 };
 

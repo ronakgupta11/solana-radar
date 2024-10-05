@@ -47,7 +47,7 @@ export const fetchTasksForACreator = async (connection, wallet, creatorPublicKey
 
     const tasks = taskAccounts.map(account => ({
       publicKey: account.publicKey.toString(),
-      description: account.account.description,
+      description: account.account.taskDescription,
       approvedWorker: account.account.approvedWorker?.toString(),
       workerRequests: account.account.workerRequests.map(worker => worker.toString()),
     }));
