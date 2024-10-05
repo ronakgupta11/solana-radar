@@ -1,8 +1,9 @@
+import CreateTask from '@/components/app/createTask/createTask'
 import React from 'react'
 
 function Page() {
   return (
-    <div>Page</div>
+    <div><CreateTask/></div>
   )
 }
 

@@ -1,3 +1,4 @@
+"use client"
 import { Card } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Table } from "flowbite-react";
@@ -13,7 +14,6 @@ const UserTasksList = () => {
 
   const [userTasks, setUserTasks] = useState();
   useEffect(() => {
-    console.log(wallet.adapter.publicKey, publicKey);
     if (wallet && publicKey) {
       const tasks = fetchTasksForACreator(connection, wallet, publicKey).then(
         (result) => {

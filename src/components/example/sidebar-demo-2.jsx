@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import SignupFormDemo from "./signup-form-demo";
-import CreateTask from "../app/createTask/createTaskBtn";
+import CreateTask from "../app/createTask/createTask";
 
 export default function SidebarDemo() {
   const links = [
