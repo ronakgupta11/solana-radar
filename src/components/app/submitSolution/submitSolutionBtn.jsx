@@ -6,10 +6,10 @@ import { getProvider, getProgram } from '../../../utils/anchor';
 import { PublicKey } from '@solana/web3.js';
 import * as anchor from '@project-serum/anchor';
 
-const SubmitSolution = ({ taskCreator, taskCount }) => {
+const SubmitSolution = ({ taskCreator, taskCount,solution }) => {
   const { connection } = useConnection();
   const { publicKey, wallet,sendTransaction } = useWallet();
-  const [solution, setSolution] = useState('');
+
 
   const submitSolution = useCallback(
     async () => {
@@ -50,13 +50,9 @@ const SubmitSolution = ({ taskCreator, taskCount }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Enter solution"
-        value={solution}
-        onChange={(e) => setSolution(e.target.value)}
-      />
-      <button onClick={submitSolution} className="btn-primary">Submit Solution</button>
+      <button onClick={submitSolution}      
+              className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28"
+      >Submit</button>
     </div>
   );
 };

@@ -1,10 +1,38 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import SendRequest from '../sendRequest/sendRequestBtn';
+import { useWallet } from '@solana/wallet-adapter-react';
+import SubmitModal from '../submitSolution/submitModal';
 
 const TaskCardForLabeler = ({cardData}) => {
+  const {publicKey} = useWallet()
+  const [status,setStatus] = useState("none")
+  const isWorkerInRequests = (workerPublicKey, workerRequests) => {
+    // Check if the workerPublicKey exists in the workerRequests array
+    return workerRequests.some(request => (request == workerPublicKey));
+  };
+
+  useEffect(()=>{
+    if (isWorkerInRequests(publicKey, cardData?.workerRequests)) {
+    
+      setStatus("waiting")
+      console.log('Worker is in requests!');
+    } 
+  
+  
+  if(cardData?.approvedWorker == publicKey.toString()){
+    setStatus("approved")
+  }else if(cardData?.approvedWorker){
+    setStatus("rejected")
+  }
+    
+  },[publicKey,cardData])
+
+
+
+
   return (<div className="max-w-xs w-full group/card ">
       <div
         className={cn(
@@ -32,7 +60,28 @@ const TaskCardForLabeler = ({cardData}) => {
           <p className="font-normal text-sm text-gray-400 relative z-10 my-4">
            {(cardData?.workerRequests)?.length>0 ?`Worker Requests: ${(cardData?.workerRequests)?.length}`: "New Task"} 
           </p>
-<SendRequest taskCount={cardData?.taskID} taskCreator={cardData?.creator}/>
+{status =="none" && <SendRequest taskCount={cardData?.taskID} taskCreator={cardData?.creator}/>}
+{status =="waiting" &&   <button
+disabled={true}
+    className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+    <span
+      className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+    <span
+      className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+      Waiting Approval
+    </span>
+  </button>}
+{status =="approved" && <SubmitModal/>}
+{status =="rejected" &&   <button
+ disabled={true}
+    className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+    <span
+      className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+    <span
+      className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+     Rejected
+    </span>
+  </button>}
         </div>
       </div>
     </div>
