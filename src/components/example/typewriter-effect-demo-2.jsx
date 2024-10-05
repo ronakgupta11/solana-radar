@@ -1,5 +1,5 @@
 "use client";
-import { TypewriterEffect, TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { TypewriterEffect } from "../ui/typewriter-effect";
 
 export default function TypewriterEffectDemo() {
   const words = [

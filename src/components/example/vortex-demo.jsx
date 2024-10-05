@@ -1,6 +1,5 @@
 import React from "react";
 import { Vortex } from "../ui/vortex";
-import JoinNowButton from '../app/landingPage/JoinNowButton'
 import TypewriterEffectDemo from "./typewriter-effect-demo-2";
 export default function VortexDemo() {
   return (

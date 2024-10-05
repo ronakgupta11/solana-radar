@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import FeaturesSectionDemo from '@/components/blocks/features-section-demo-2'
+import FeaturesSectionDemo from './features-section-demo-2'
 const LowerDescription = () => {
   return (
     <div  className='pt-8 pb-16'>
