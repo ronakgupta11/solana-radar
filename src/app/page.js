@@ -7,6 +7,7 @@ import {FooterPage} from "../components/app/landingPage/FooterPage";
 import HeroScrollDemo from "@/components/example/container-scroll-animation-demo";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import Navbar from "@/components/app/Navbar";
+import TeamSection from "@/components/app/Team/TeamSection";
 export default function Home() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function Home() {
      <MidDescription/>
 <HeroScrollDemo/>
      <LowerDescription/>
+     <TeamSection/>
      <TextHoverEffect text={"Labelize"}/>
     </div>
      <FooterPage/>
