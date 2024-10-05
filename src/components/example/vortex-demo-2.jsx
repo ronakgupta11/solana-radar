@@ -1,4 +1,4 @@
-import React from "react";
+import {React} from "react";
 import { Vortex } from "../ui/vortex";
 import TypewriterEffectDemo from "./typewriter-effect-demo-2";
 import Link from "next/link";

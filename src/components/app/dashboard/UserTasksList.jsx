@@ -1,6 +1,20 @@
-import { Card } from "flowbite-react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+    Modal,
+    ModalBody,
+    ModalContent,
+
+    ModalTrigger,
+  } from "../../ui/animated-modal";
 import React, { useEffect, useState } from "react";
-import { Table } from "flowbite-react";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { fetchTasksForACreator } from "@/utils/fetchFunctions";
@@ -10,10 +24,9 @@ import ApproveWorker from "../approveRequest/approveRequestBtn";
 const UserTasksList = () => {
   const { connection } = useConnection();
   const { wallet, publicKey } = useWallet();
-
+  const [isLoading,setIsLoading]=useState(false);
   const [userTasks, setUserTasks] = useState();
   useEffect(() => {
-    console.log(wallet.adapter.publicKey, publicKey);
     if (wallet && publicKey) {
       const tasks = fetchTasksForACreator(connection, wallet, publicKey).then(
         (result) => {
@@ -22,7 +35,7 @@ const UserTasksList = () => {
         }
       );
     }
-  }, []);
+  }, [wallet,publicKey]);
   const fetchUserTasks = () => {
     if (wallet && publicKey) {
       const tasks = fetchTasksForACreator(connection, wallet, publicKey).then(
@@ -38,85 +51,70 @@ const UserTasksList = () => {
       <div className="  ">
         <div className="flex gap-4">
           <h5 className="text-2xl mx-2  tracking-tight text-gray-900 dark:text-white">
-            Tasks Done
+            Tasks Created
           </h5>
           <button
             onClick={fetchUserTasks}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:text-white dark:hover"
+            className="shadow-[0_0_0_3px_#000000_inset] px-3 py-2 bg-transparent border border-black dark:border-white dark:text-white text-black rounded-lg font-bold transform hover:-translate-y-1 transition duration-400"
           >
             Refresh
           </button>
         </div>
+        <div></div>
+        <div className="flex flex-col mt-3   border-2">
+          <Table className="rounded-xl  text-white mt-3 flex-grow">
 
-        <div className=" flex flex-col">
-          <Table className="rounded-xl mt-3 flex-grow">
-            <Table.Head>
-              <Table.HeadCell>Name</Table.HeadCell>
-              <Table.HeadCell>Instructions</Table.HeadCell>
-              <Table.HeadCell>Submitted</Table.HeadCell>
-              <Table.HeadCell>Approved</Table.HeadCell>
-              <Table.HeadCell>Incoming Approvals</Table.HeadCell>
-              <Table.HeadCell>
-                <span className="sr-only">Edit</span>
-              </Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-              {userTasks?.map((data, index) => {
-                return (
-                  <>
-                    <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        {data?.name || `Task ${index + 1}`}
-                      </Table.Cell>
-                      <Table.Cell>{data?.description}</Table.Cell>
-                      <Table.Cell>Yes</Table.Cell>
-                      <Table.Cell>{data?.approvedWorker || "None"}</Table.Cell>
-                      <Table.Cell>
-                        <Dropdown
-                          label="See Requests"
-                          dismissOnClick={false}
-                        >
-                          {data?.workerRequests?.map((item) => {
-                            return(
-                                <>
-                                <Dropdown.Item>
-                              <div className="flex justify-center items-center gap-2 px-3 py-1">
-                                <div>{item}</div>
-                                <ApproveWorker/>
-                              </div>
-                            </Dropdown.Item>
-                                </>
-                            )
-                          })}
-                        </Dropdown>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <a
-                          href="#"
-                          className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                        >
-                          Edit
-                        </a>
-                      </Table.Cell>
-                    </Table.Row>
-                  </>
-                );
-              })}
-
-              {Array.from({ length: 2 }).map((_, index) => (
-                <Table.Row
-                  key={index}
-                  className="bg-gray-100 dark:border-gray-700 dark:bg-gray-800"
-                >
-                  <Table.Cell className="whitespace-nowrap">&nbsp;</Table.Cell>
-                  <Table.Cell>&nbsp;</Table.Cell>
-                  <Table.Cell>&nbsp;</Table.Cell>
-                  <Table.Cell>&nbsp;</Table.Cell>
-                  <Table.Cell>&nbsp;</Table.Cell>
-                  <Table.Cell>&nbsp;</Table.Cell>
-                </Table.Row>
+            <TableHeader>
+              <TableRow className="text-white" >
+                <TableHead className="text-white">Name</TableHead>
+                <TableHead className="text-center text-white">Instructions</TableHead>
+                <TableHead className="text-white">Submitted</TableHead>
+                <TableHead className="text-white">Approved</TableHead>
+                <TableHead className="text-white">Incoming Approvals</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody >
+              {userTasks?.map((data, index) => (
+                <TableRow key={index} className="bg-black">
+                  <TableCell className="font-medium text-gray-900 dark:text-white">
+                    {data?.name || `Task ${index + 1}`}
+                  </TableCell>
+                  <TableCell>{data?.description}</TableCell>
+                  <TableCell>Yes</TableCell>
+                  <TableCell>{data?.approvedWorker || "None"}</TableCell>
+                  <TableCell>
+                    {data?.workerRequests?.map((item, idx) => (
+                     
+                      <Modal>
+                        <ModalTrigger className="bg-black dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
+                          <span className=" text-center ">See Requests</span>
+                        </ModalTrigger>
+                        <ModalBody>
+                          <ModalContent>
+                          <div className="flex justify-center items-center gap-2 px-3 py-1">
+                           <div>{item}</div>
+                          <ApproveWorker />
+                        </div>
+                          </ModalContent>
+                          
+                        </ModalBody>
+                      </Modal>
+                    ))}
+                  </TableCell>
+                </TableRow>
               ))}
-            </Table.Body>
+
+              {/* Add empty rows to fill space */}
+              {Array.from({ length: 2 }).map((_, index) => (
+                <TableRow key={index} className="bg-black">
+                  <TableCell>&nbsp;</TableCell>
+                  <TableCell>&nbsp;</TableCell>
+                  <TableCell>&nbsp;</TableCell>
+                  <TableCell>&nbsp;</TableCell>
+                  <TableCell>&nbsp;</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </div>
       </div>

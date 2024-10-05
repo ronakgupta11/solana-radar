@@ -11,6 +11,7 @@ import TeamSection from "@/components/app/Team/TeamSection";
 import FAQSection from "@/components/app/FaqSection";
 import MacbookScrollDemo from "@/components/example/macbook-scroll-demo";
 import MacbookDemo from "@/components/app/Demo/MacbookDemo";
+
 export default function Home() {
   return (
     <>

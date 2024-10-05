@@ -18,28 +18,28 @@ export default function SidebarDemo() {
   const links = [
     {
       label: "Dashboard",
-      href: "#",
+      href: "/dashboard",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Profile",
-      href: "#",
+      label: "Home",
+      href: "/",
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Explore",
-      href: "#",
+      label: "Explore Tasks",
+      href: "/labelerBoard",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Create Task",
-      href: "#",
+      href: "/createTask",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -117,7 +117,7 @@ const Dashboard = () => {
     (<div className="w-full">
       
       <div
-        className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col md:flex-row justify-between  gap-2 w-full h-full">
+        className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col md:flex-row justify-evenly  gap-2 w-full h-full">
         <UserTasksList/>
         <ProfileCard/>
       </div>
