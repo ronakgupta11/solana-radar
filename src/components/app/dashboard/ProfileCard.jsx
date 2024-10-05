@@ -1,8 +1,15 @@
 
 "use client";
 
-import { Card } from "flowbite-react";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 export default function ProfileCard() {
    const userData = {
         name: "John Doe",
@@ -14,11 +21,15 @@ export default function ProfileCard() {
   return (
     <>
     <div className="flex flex-col gap-10">
-    <div >
-    <h5 className="text-2xl mx-2  tracking-tight text-gray-900 dark:text-white">
-        User Overview
-      </h5>
-    <Card href="#"  className="w-[28rem]  mt-2">
+
+    
+    <Card className="w-[28rem] mt-4">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-col gap-y-3">
       <div className="flex justify-between ">
         <p>Name </p>
         <p>{userData.name}</p>
@@ -37,33 +48,10 @@ export default function ProfileCard() {
         <p>{userData.tasksCompleted}</p>
       </div>
       <div className="border-t border-gray-600  "></div>
+        </div>
+      </CardContent>
+      
     </Card>
-    </div>
-
-    {/* Earnings Tab */}
-
-    <div>
-    <h5 className="text-2xl mx-2  tracking-tight text-gray-900 dark:text-white">
-        Earnings 
-      </h5>
-    <Card href="#" className="w-[28rem]  mt-2">
-      <div className="flex justify-between ">
-        <p>Approved Tasks </p>
-        <p>{userData.name}</p>
-      </div>
-      <div className="border-t  border-gray-600  "></div>
-      <div className="flex justify-between ">
-        <p>Bonuses </p>
-        <p>${userData.tasksCreated}</p>
-      </div>
-      <div className="border-t border-gray-600  "></div>
-      <div className="flex justify-between ">
-        <p>Total Earnings </p>
-        <p>${userData.tasksCompleted}</p>
-      </div>
-      <div className="border-t border-gray-600  "></div>
-    </Card>
-    </div>
     </div>
     </>
   );

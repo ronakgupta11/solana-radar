@@ -3,10 +3,9 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: true },
+  { name: 'Explore', href: '/lablerBoard', current: false },
+  { name: 'Create Task', href: '/createTask', current: false },
 ]
 
 function classNames(...classes) {

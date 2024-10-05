@@ -11,6 +11,7 @@ import Navbar from "@/components/app/Navbar";
 import TeamSection from "@/components/app/Team/TeamSection";
 import FAQSection from "@/components/app/FaqSection";
 import MacbookDemo from "@/components/app/Demo/MacbookDemo";
+
 export default function Home() {
   return (
     <>
