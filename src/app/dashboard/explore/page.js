@@ -1,8 +1,11 @@
+import ExploreTable from '@/components/app/labelerboard/exploreTable'
 import React from 'react'
 
 function Page() {
   return (
-    <div></div>
+    <div>
+        <ExploreTable/>
+    </div>
   )
 }
 
