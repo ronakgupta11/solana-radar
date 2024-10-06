@@ -1,10 +1,9 @@
 "use client"
 import React,{useState,useEffect} from "react";
-import TaskCardForLabeler from "../../components/app/labelerboard/TaskCardForLabeler";
-import Navbar from "@/components/app/Navbar";
+import TaskCardForLabeler from "./TaskCardForLabeler";
 import { fetchAllTasks } from "@/utils/fetchFunctions";
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-const page = () => {
+const ExploreTable = () => {
 
   const { connection } = useConnection();
   const { wallet } = useWallet();
@@ -30,7 +29,6 @@ const page = () => {
 
   return (
     <>
-      <Navbar/>
       <div class="flex flex-col items-center gap-10 py-[60px] self-stretch">
         <div>
           <h2 class="text-white text-center font-work-sans text-[51px] font-semibold leading-[1.1] capitalize">
@@ -55,4 +53,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ExploreTable;

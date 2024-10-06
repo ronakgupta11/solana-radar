@@ -31,12 +31,14 @@ export default function Layout({children}) {
     {
       label: "Explore",
       href: "/dashboard/explore",
+      href: "/dashboard/explore",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Create Task",
+      href: "/dashboard/createTask",
       href: "/dashboard/createTask",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
@@ -111,7 +113,7 @@ const Dashboard = ({children}) => {
     (<div className="w-full">
       
       <div
-        className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 w-full h-full">
+        className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 w-full h-full overflow-y-scroll ">
             {children}
       </div>
     </div>)
