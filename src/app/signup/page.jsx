@@ -37,9 +37,9 @@ const page = () => {
         if (userRole && 'requester' in userRole) { 
           
           // Assuming 1 is for Requester
-          router.push('/dashboard'); // Redirect to requester page
+          router.push('/dashboard/createTask'); // Redirect to requester page
         } else if (userRole && 'worker' in userRole) { // Assuming 2 is for Worker
-          router.push('/labelerboard'); // Redirect to worker page
+          router.push('/dashboard/explore'); // Redirect to worker page
         }
       } catch (err) {
         console.error('Error fetching user data account:', err);
