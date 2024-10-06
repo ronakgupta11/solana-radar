@@ -16,18 +16,23 @@ const TaskCardForLabeler = ({cardData,index}) => {
     return workerRequests.some(request => (request == workerPublicKey));
   };
   useEffect(()=>{
-    if(!publicKey){
-      setStatus("none")
-    }
-    else if (isWorkerInRequests(publicKey, cardData?.workerRequests)) {
+    if(publicKey){
+      
+    
+   if (isWorkerInRequests(publicKey, cardData?.workerRequests)) {
       setStatus("waiting")
       console.log('Worker is in requests!');
     } 
+
   if(cardData?.approvedWorker === publicKey.toString()){
     setStatus("approved")
   }else if(cardData?.approvedWorker){
     setStatus("rejected")
+  }}
+  else{
+    setStatus("none")
   }
+
 
   },[publicKey,cardData])
 
@@ -61,7 +66,7 @@ className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:
 className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
 <span
 className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-Rejected
+Already Taken
 </span>
 </button>}</TableCell>
     
