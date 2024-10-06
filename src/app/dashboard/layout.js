@@ -11,33 +11,33 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 export default function Layout({children}) {
   const links = [
     {
       label: "Dashboard",
-      href: "#",
+      href: "/dashboard/manage",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
-      label: "Profile",
-      href: "#",
+      label: "Home",
+      href: "/",
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Explore",
-      href: "#",
+      href: "/dashboard/explore",
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Create Task",
-      href: "#",
+      href: "/dashboard/createTask",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -62,19 +62,15 @@ export default function Layout({children}) {
             </div>
           </div>
           <div>
-            <SidebarLink
-              link={{
-                label: "Manu Arora",
-                href: "#",
-                icon: (
-                  <Image
-                    src="https://assets.aceternity.com/manu.png"
-                    className="h-7 w-7 flex-shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar" />
-                ),
-              }} />
+         { open && <WalletMultiButton  style={{
+    borderRadius: '40px', // Fully rounded
+    backgroundColor: '#1f2937', // Dark grey color
+    color: '#ffffff', // White text for contrast
+    padding: '10px 20px', // Padding for better button size
+    border: 'none', // Remove border if any
+    cursor: 'pointer', // Pointer cursor to indicate it's clickable
+  }} />}
+           
           </div>
         </SidebarBody>
       </Sidebar>

@@ -9,10 +9,12 @@ import { Label } from "../../ui/label";
 import { Input } from "../../ui/input";
 import { cn } from "@/lib/utils"; 
 
+import { Loader } from '../Loader';
 const CreateTask = () => {
   const { connection } = useConnection();
   const { publicKey, wallet ,sendTransaction} = useWallet();
   const [taskDescription, setTaskDescription] = useState('');
+  const [isLoading,setIsLoading]=useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -23,6 +25,7 @@ const CreateTask = () => {
       if (!publicKey || !wallet || !taskDescription) return;
 
       try {
+        setIsLoading(true)
         const provider = getProvider(connection, wallet);
         const program = getProgram(provider);
 
@@ -57,6 +60,7 @@ const CreateTask = () => {
                 await connection.confirmTransaction(signature, 'processed');
 
                 console.log(`task created successfully! Transaction signature: ${signature}`);
+        setIsLoading(false)
 
         console.log("Task created successfully!");
       } catch (err) {
@@ -68,7 +72,10 @@ const CreateTask = () => {
 
   return (
     <div>
-     <div
+    {isLoading &&  <div className='absolute left-[50%] top-[50%]'>
+        <Loader message={"Creating New Task..."}/>
+      </div>}
+   {!isLoading &&  <div
       className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Upload Your Task
@@ -97,7 +104,7 @@ const CreateTask = () => {
         <div
           className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />  
       </form>
-    </div>
+    </div>}
       
     </div>
   );

@@ -18,22 +18,27 @@ import React, { useEffect, useState } from "react";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { fetchTasksForACreator } from "@/utils/fetchFunctions";
-import { Approvals } from "./Approvals";
-import { Dropdown } from "flowbite-react";
+import { Loader } from "../Loader";
 import ApproveWorker from "../approveRequest/approveRequestBtn";
 const UserTasksList = () => {
   const { connection } = useConnection();
   const { wallet, publicKey } = useWallet();
-  const [isLoading,setIsLoading]=useState(false);
+  const [isLoading,setIsLoading]=useState(true);
   const [userTasks, setUserTasks] = useState();
   useEffect(() => {
     if (wallet && publicKey) {
+       
       const tasks = fetchTasksForACreator(connection, wallet, publicKey).then(
         (result) => {
           console.log("tasks----->", result);
           setUserTasks(result);
+          setIsLoading(false)
         }
       );
+    }else{
+        setTimeout(()=>{
+            setIsLoading(false)
+        },5000)
     }
   }, [wallet,publicKey]);
   const fetchUserTasks = () => {
@@ -48,7 +53,10 @@ const UserTasksList = () => {
   };
   return (
     <>
-      <div className="  ">
+       {isLoading &&  <div className='absolute top-[50%] left-[50%]'>
+        <Loader message={"Fetching Data..."}/>
+      </div>}
+     {!isLoading && <div className="  ">
         <div className="flex gap-4">
           <h5 className="text-2xl mx-2  tracking-tight text-gray-900 dark:text-white">
             Tasks Created
@@ -117,7 +125,7 @@ const UserTasksList = () => {
             </TableBody>
           </Table>
         </div>
-      </div>
+      </div>}
     </>
   );
 };
