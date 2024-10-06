@@ -2,22 +2,21 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import React, { useState, useEffect } from "react";
-import TaskCardForLabeler from "../../../components/app/labelerboard/TaskCardForLabeler";
-import Navbar from "@/components/app/Navbar";
 import { fetchAllTasks } from "@/utils/fetchFunctions";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import SendRequest from "@/components/app/sendRequest/sendRequestBtn";
+
+import TaskCardForLabeler from "@/components/app/labelerboard/TaskCardForLabeler";
 const page = () => {
   const { connection } = useConnection();
-  const { wallet } = useWallet();
+  const { wallet,publicKey } = useWallet();
   const [tasks, setTasks] = useState([]);
+ 
 
   // Fetch all tasks on component mount
   useEffect(() => {
@@ -64,15 +63,7 @@ const page = () => {
           </TableHeader>
           <TableBody>
             {tasks?.map((data, index) => (
-              <TableRow key={index} className="bg-black">
-                <TableCell className="font-medium text-gray-900 dark:text-white">
-                  {data?.name || `Task ${index + 1}`}
-                </TableCell>
-                <TableCell>{data?.description}</TableCell>
-                <TableCell>{data?.creator}</TableCell>
-                <TableCell><SendRequest/></TableCell>
-                
-              </TableRow>
+             <TaskCardForLabeler cardData={data} key={index} index={index}/>
             ))}
 
             {/* Add empty rows to fill space */}

@@ -2,7 +2,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -102,7 +101,7 @@ const UserTasksList = () => {
                           <ModalContent>
                           <div className="flex justify-center items-center gap-2 px-3 py-1">
                            <div>{item}</div>
-                          <ApproveWorker />
+                          <ApproveWorker taskCount={data?.taskID} workerToApprove={item}/>
                         </div>
                           </ModalContent>
                           

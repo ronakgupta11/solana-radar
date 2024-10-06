@@ -6,7 +6,7 @@ import { getProvider, getProgram } from '../../../utils/anchor';
 import { PublicKey } from '@solana/web3.js';
 import * as anchor from '@project-serum/anchor';
 
-const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
+const ApproveWorker = ({ taskCount, workerToApprove }) => {
   const { connection } = useConnection();
   const { publicKey, wallet,sendTransaction } = useWallet();
 
@@ -19,11 +19,11 @@ const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
         const program = getProgram(provider);
 
         const [taskAccount] = PublicKey.findProgramAddressSync(
-          [Buffer.from("task"), taskCreator.toBuffer(), Buffer.from(new anchor.BN(taskCount).toArray("le", 8))],
+          [Buffer.from("task"), publicKey.toBuffer(), Buffer.from(new anchor.BN(taskCount).toArray("le", 8))],
           program.programId
         );
 
-        const tx = await program.methods.approveWorker(workerToApprove).accounts({
+        const tx = await program.methods.approveWorker(new PublicKey(workerToApprove)).accounts({
           creator: publicKey,
           taskAccount,
         }).instruction();
@@ -44,7 +44,7 @@ const ApproveWorker = ({ taskCreator, taskCount, workerToApprove }) => {
         console.error('Error approving worker:', err);
       }
     },
-    [connection, publicKey, wallet, taskCreator, taskCount, workerToApprove]
+    [connection, publicKey, wallet, taskCount, workerToApprove]
   );
 
   return (
